@@ -11,8 +11,8 @@
 2. INSTALLATION
   System Requirement: following libraries are needed for python codes: Panda, Numpy, seaborn, urllib, matplotlib, scikit-learn, xgboost.
   The code was developed and tested with Python 3.7 or higher.
-  a.  Clone the code
-   
+  a. Clone the code
+  b. Create a sub-folder, 'plots' where codes are installed. The plots will be generated in that folder.
 
 3. EXECUTION
   a. Run a wrapper script, "main.py" like this - "python main.py" on command line.
