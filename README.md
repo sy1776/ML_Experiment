@@ -1,7 +1,7 @@
 ==Overview==
 
 The codes/packages in this repository is currently used to load the data, 'Adult' from UCI repository and perform the descriptive and exploratory data analysis. 
-It manipulates the data and transform 
+It manipulates the data and transforms some variables into more meaningful values ML likes.
 I plan to use the same codes to perform the analysis and run various ML models with different datasets.
 
 ==What has done==
