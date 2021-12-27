@@ -24,3 +24,6 @@ I plan to use the same codes to perform the analysis and run various ML models w
   		         			      
 * Run ML Models: Decision Tree, SVM, Logistic Regression, and XGBoost were performed via <tt>models.py</tt> using scikit-learn and xgboost libs.
   XGBoost performance is best
+
+==How to install and execute==
+Please refer to CODE_INFO.txt

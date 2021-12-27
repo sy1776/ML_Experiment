@@ -1,0 +1,25 @@
+1. DESCRIPTION
+  Below is the code packages for this project.
+  1) Python codes - there are 5 Python scripts and 1 constant definition file. Each scripts are described below in detail. Their job essentially is to import the data
+     from the file and performs various algorithms and saves output to database.
+     a. main.py - wrapper script to call and execute other scripts.
+     b. analyze_data.py - performs the descriptive and exploratory analysis on the dataset.
+     c. manipulate_data.py - cleans and transforms categorical values into numerical values that will be fed into ML models. 
+     d. models.py - runs various ML algorithms.
+     e. utils.py - loads the data directly from UCI respository. plots the result
+
+2. INSTALLATION
+  System Requirement: following libraries are needed for python codes: Panda, Numpy, seaborn, urllib, matplotlib, scikit-learn, xgboost.
+  The code was developed and tested with Python 3.7 or higher.
+  a.  Clone the code
+   
+
+3. EXECUTION
+  a. Run a wrapper script, "main.py" like this - "python main.py" on command line.
+     or
+     Run a wrapper script, "main.py" in Python editor like Pycharm.
+     It will execute below scripts in following order:
+      util.py
+      analyze_data.py
+      manipulate_data.py 
+      models.py
