@@ -1,5 +1,6 @@
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
+import numpy as np
 import constants
 
 VERBOSE = True
@@ -57,3 +58,19 @@ def transform_data(df):
     print("transformeddf = ")
     print(df.head(20))
     return df
+
+def encode_categorical_data(df):
+    #Feature engineering
+    #One Hot Encoding of the Categorical features
+    categorical_cols = df[constants.CATEGORICAL_COLS]
+    encodedDF = pd.get_dummies(categorical_cols)
+    numericDF = df.drop(constants.CATEGORICAL_COLS, axis=1)
+    newDF = pd.concat([numericDF, encodedDF], axis=1)
+
+    #print("encoded + numeric df = ")
+    #print(newDF.head(20))
+    ychangedDF = change_y_to_binary_value(newDF)
+    #_, i = np.unique(ychangedDF.columns, return_index=True)
+    #print("i = ", i)
+    #ychangedDF = ychangedDF.iloc[:, i]
+    return ychangedDF

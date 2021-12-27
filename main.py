@@ -14,11 +14,12 @@ def main():
         print("")
 
     dataFrame = load_adult_data()
-    #describe_data(dataFrame)
+    describe_data(dataFrame)
     removedspaceDF = remove_space(dataFrame)
     filteredDF = filter_missing_data(removedspaceDF)
     nodupsDF = find_remove_dups(filteredDF)
-    transformedDF = transform_data(nodupsDF)
+    #transformedDF = transform_data(nodupsDF)
+    transformedDF = encode_categorical_data(nodupsDF)
     run_models(transformedDF)
     duration = time.time() - start_time
     if DISPLAY:

@@ -9,7 +9,7 @@ VERBOSE=True
 def load_adult_data():
     url = "https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data"
     adultDF = pd.read_csv(ur.urlopen(url), sep=',', index_col=False, names=constants.COL_NAMES, dtype=constants.TYPE_DICT_COLS)
-
+    #adultDF = pd.read_csv(ur.urlopen(url), sep=',', index_col=False, names=constants.COL_NAMES)
     return adultDF
 
 

@@ -55,17 +55,15 @@ def randomForest_pred(X_train, Y_train, X_test):
     return model.predict(X_test)
 
 def xgb_pred(X_train, Y_train, X_test):
-    # TODO:train a logistic regression classifier using X_train and Y_train. Use this to predict labels of X_test
-    # IMPORTANT: use max_depth as 5. Else your test cases might fail.
-    xgbm = xgb.XGBClassifier(eval_metric="logloss",
-                             learning_rate=0.3,
-                             reg_lambda=10,
-                             use_label_encoder=False,  # as we have done encoding
-                             max_depth=5,
-                             subsample=1)
-    model = xgbm.fit(X_train, Y_train)
+    #params = {"objective": "binary:logistic", 'colsample_bytree': 0.3, 'learning_rate': 0.1,
+    #          'max_depth': 5, 'alpha': 10}
+    params = {"objective": "binary:logistic", "eval_metric": "logloss", "learning_rate": 0.3,
+              "reg_lambda": 10, "use_label_encoder": False,  # as we have done encoding
+              "max_depth": 5, "subsample": 1}
+    classification = xgb.XGBClassifier(**params)
+    classification.fit(X_train, Y_train)
 
-    return model.predict(X_test)
+    return classification.predict(X_test)
 
 # input: Y_pred,Y_true
 # output: accuracy, auc, precision, recall, f1-score
@@ -100,7 +98,9 @@ def run_models(df):
     X = df.drop('income', axis=1)
 
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.30, random_state=RANDOM_STATE)
+    #print("X_train.dtypes = ", X_train.dtypes)
+    #print("Y_train.dtypes = ", Y_train.dtypes)
     display_metrics("Decision Tree", decisionTree_pred(X_train, Y_train, X_test), Y_test)
     display_metrics("Logistic Regression", logistic_regression_pred(X_train, Y_train, X_test), Y_test)
     display_metrics("SVM", svm_pred(X_train, Y_train, X_test), Y_test)
-    #display_metrics("XGBoost", xgb_pred(X_train, Y_train, X_test), Y_test)
+    display_metrics("XGBoost", xgb_pred(X_train, Y_train, X_test), Y_test)
